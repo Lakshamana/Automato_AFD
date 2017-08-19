@@ -190,7 +190,7 @@ void add_trule(TRule **ptr, char *ei, char data, char *eo){
 
 void show_trule(TRule *ptr){
     while(ptr != NULL){
-        printf("%s %c %s\n", ptr->e_in, ptr->carac, ptr->e_out);
+        printf("t(%s, %c) = %s\n", ptr->e_in, ptr->carac, ptr->e_out);
         ptr = ptr->prox;
     }
 }
@@ -238,17 +238,16 @@ void read_trule(FILE **file, TRule **p1, Alfabeto *p2, Estado *p3){
 *   int automate(Alfabeto **w, Alfabeto *alfa, Estado **current);
 */
 
-void read_user_word(Alfabeto **w, Alfabeto *ptr){
+int read_user_word(Alfabeto **w, Alfabeto *ptr){
     char read = ' ';
     while(read != '\n'){
         read = getchar();
         if(read != '\n')
             if(seek_alfa(ptr, read))
                 add_alfa(w, read);
-            else{
-                return;
-            }
+            else return 0;
     }
+    return 1;
 }
 
 char * next_state(TRule *ptr, char *ei, char c){
@@ -269,8 +268,9 @@ int automate(Alfabeto *w, TRule *rule, Estado **autstate, Estado *pfin){
             current = current->prox;
         char *current_state = current->e;
         char *new_state = next_state(rule, current_state, read);
-        if(new_state != NULL)
+        if(new_state != NULL && seek_alfa(w, w->carac))
             add_est(autstate, new_state);
+        else return 0;
         w = w->prox;
     }
     Estado *ptr = *autstate;
