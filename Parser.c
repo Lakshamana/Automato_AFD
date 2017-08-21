@@ -97,9 +97,9 @@ int main() {
         return 0;
     else{
         if(automate(w, rule, &autom_st, kfinals))
-            printf("ACEITA\n\nEstados percorridos:\n");
+            printf("\nACEITA\n\nEstados percorridos:\n");
         else
-            printf("RECUSADA\n\nEstados percorridos:\n");
+            printf("\nRECUSADA\n\nEstados percorridos:\n");
         show_alfa(w);
         printf("\n");
         show_est(autom_st);
