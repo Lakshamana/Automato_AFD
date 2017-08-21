@@ -250,7 +250,7 @@ int read_user_word(Alfabeto **w, Alfabeto *ptr){
             	add_alfa(w, read);
             	printf("\nCaractere inválido (%c)", read);
             	i++;
-	    }
+			}
     }
     return (i == 0);
 }
