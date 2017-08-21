@@ -210,7 +210,7 @@ int seek_trule(TRule *ptr, char *ei, char c, char *eo){
 
 int al1final(TRule *p1, Estado *p2_fin){
     while(p1 != NULL){
-        if(seek_est(p2_fin, p1->e_out)) //A lista de estados especificada (p2) é a lista de estados finais.
+        if(seek_est(p2_fin, p1->e_out)) //A lista de estados especificada (p2) Ã© a lista de estados finais.
             return 1;
         p1 = p1->prox;
     }
@@ -240,14 +240,19 @@ void read_trule(FILE **file, TRule **p1, Alfabeto *p2, Estado *p3){
 
 int read_user_word(Alfabeto **w, Alfabeto *ptr){
     char read = ' ';
+    int i = 0;
     while(read != '\n'){
         read = getchar();
         if(read != '\n')
             if(seek_alfa(ptr, read))
                 add_alfa(w, read);
-            else return 0;
+            else{
+            	add_alfa(w, read);
+            	printf("\nCaractere inválido (%c)", read);
+            	i++;
+			}
     }
-    return 1;
+    return (i == 0);
 }
 
 char * next_state(TRule *ptr, char *ei, char c){
