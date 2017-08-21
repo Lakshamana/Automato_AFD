@@ -252,8 +252,8 @@ int read_user_word(Alfabeto **w, Alfabeto *ptr){
             	if(i == 1)
             		printf("\nRECUSADA\n\nCaractere inválido (%c)", read);
             	else if(i > 1)
-					printf("\nCaractere inválido (%c)", read);	
-			}
+			printf("\nCaractere inválido (%c)", read);	
+		}
     }
     return (i == 0);
 }
