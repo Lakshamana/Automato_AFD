@@ -105,7 +105,7 @@ int main() {
         show_est(autom_st);
     }
     fclose(file);
-    getchar();
     system("PAUSE");
+	getchar();
     return 0;
 }
