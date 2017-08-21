@@ -106,6 +106,6 @@ int main() {
     }
     fclose(file);
     system("PAUSE");
-	getchar();
+    getchar();
     return 0;
 }
