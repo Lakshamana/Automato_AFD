@@ -93,10 +93,9 @@ int main() {
     }
     show_trule(rule);
     printf("\nDigite a palavra: ");
-    if(!read_user_word(&w, alfa)){
-        printf("Caracter inválido!");
+    if(!read_user_word(&w, alfa))
         return 0;
-    }else{
+    else{
         if(automate(w, rule, &autom_st, kfinals))
             printf("ACEITA\n\nEstados percorridos:\n");
         else
