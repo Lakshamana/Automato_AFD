@@ -94,7 +94,7 @@ int main() {
     	printf("\nDigite a palavra: ");
     	if(!read_user_word(&w, alfa))
     		return 0;
-		else{
+	else{
         	if(automate(w, rule, &autom_st, kfinals))
             	printf("\nACEITA\n\nEstados e caracteres percorridos:\n");
         	else
