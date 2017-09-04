@@ -12,7 +12,7 @@ int main() {
     char read = ' ', qi[5], qf[5], *q;
     int i = 0, j = 0;
     setlocale(LC_ALL, "portuguese");
-    file = fopen("automato2.txt", "r");
+    file = fopen("automato-2.txt", "r");
 
     if(file == NULL){
         printf("Arquivo inexistente!");
@@ -57,55 +57,56 @@ int main() {
                 }
             }
         }
-    }
-    read_trule(&file, &rule, alfa, kest);
-    if(!al1final(rule, kfinals)){
-        printf("Pelo menos um estado de destino deve ser um estado final!");
-        return 0;
-    }
-    printf("Alfabeto:\n");
-    if(empty_alfa(alfa)){
-        printf("\nAlfabeto vazio!");
-        return 0;
-    }
-    show_alfa(alfa);
-    printf("\n\nConjunto total de estados:\n");
-    if(empty_est(kest)){
-        printf("Conjunto de estados vazio!");
-        return 0;
-    }
-    show_est(kest);
-    printf("\n\nConjunto dos estados finais:\n");
-    if(empty_est(kfinals)){
-        printf("Conjunto de estados finais vazio!");
-        return 0;
-    }
-    show_est(kfinals);
-    printf("\n\nEstado inicial: %s", q);
-    if(empty_est(autom_st)){
-        printf("Estado inicial inexistente!");
-        return 0;
-    }
-    printf("\n\nRegras:\n");
-    if(empty_trule(rule)){
-        printf("Conjunto de regras vazio!");
-        return 0;
-    }
-    show_trule(rule);
-    printf("\nDigite a palavra: ");
-    if(!read_user_word(&w, alfa))
-    	return 0;
-	else{
-        if(automate(w, rule, &autom_st, kfinals))
-            printf("\nACEITA\n\nEstados percorridos:\n");
-        else
-            printf("\nRECUSADA\n\nEstados percorridos:\n");
-        show_alfa(w);
-        printf("\n");
-        show_est(autom_st);
+    	read_trule(&file, &rule, alfa, kest);
+    	if(!al1final(rule, kfinals)){
+        	printf("Pelo menos um estado de destino deve ser um estado final!");
+        	return 0;
+    	}
+    	printf("Alfabeto:\n");
+    	if(empty_alfa(alfa)){
+	        printf("\nAlfabeto vazio!");
+    	    return 0;
+    	}
+    	show_alfa(alfa);
+    	printf("\n\nConjunto total de estados:\n");
+    	if(empty_est(kest)){
+        	printf("Conjunto de estados vazio!");
+        	return 0;
+    	}
+    	show_est(kest);
+    	printf("\n\nConjunto dos estados finais:\n");
+    	if(empty_est(kfinals)){
+	    	printf("Conjunto de estados finais vazio!");
+     		return 0;
+    	}
+    	show_est(kfinals);
+    	printf("\n\nEstado inicial: %s", q);
+    	if(empty_est(autom_st)){
+        	printf("Estado inicial inexistente!");
+        	return 0;
+    	}
+    	printf("\n\nRegras:\n");
+    	if(empty_trule(rule)){
+        	printf("Conjunto de regras vazio!");
+        	return 0;
+    	}
+    	show_trule(rule);
+    	printf("\nDigite a palavra: ");
+    	if(!read_user_word(&w, alfa))
+    		return 0;
+		else{
+        	if(automate(w, rule, &autom_st, kfinals))
+            	printf("\nACEITA\n\nEstados e caracteres percorridos:\n");
+        	else
+            	printf("\nRECUSADA\n\nEstados e caracteres percorridos:\n");
+        	show_alfa(w);
+        	printf("\n");
+        	show_est(autom_st);
+        	printf("\n\n");
+    	}
     }
     fclose(file);
     system("PAUSE");
-    getchar();
+	getchar();
     return 0;
 }
